@@ -1,5 +1,5 @@
 import boto3
-import cStringIO
+from io import StringIO, BytesIO
 from PIL import Image, ImageOps
 import os
 
@@ -11,7 +11,7 @@ def s3_thumbnail_generator(event, context):
     # parse the event
     print(event)
     bucket = event['Records'][0]['s3']['bucket']['name']
-    key = event['Records'][0]['s3']['bucket']['key']
+    key = event['Records'][0]['s3']['object']['key']
 
     # only create a thumbnail on non-thumbnail pictures
     if (not key.endswith("_thumbnail.png")):
@@ -31,7 +31,9 @@ def get_s3_image(bucket, key):
     response = s3.get_object(Bucket=bucket, Key=key)
     imagecontent = response['Body'].read()
 
-    file = cStringIO.StringIO(imagecontent)
+    # file = cStringIO.StringIO(imagecontent)
+    # file = StringIO(imagecontent)
+    file = BytesIO(imagecontent)
     img = Image.open(file)
     return img
 
@@ -47,7 +49,9 @@ def new_filename(key):
 
 def upload_to_s3(bucket, key, image):
     # saving the image into a cStringIO object to avoid writing to disk
-    out_thumbnail = cStringIO.StringIO()
+    # out_thumbnail = cStringIO.StringIO()
+    # out_thumbnail = StringIO()
+    out_thumbnail = BytesIO()
     image.save(out_thumbnail, 'PNG')
     out_thumbnail.seek(0)
 
