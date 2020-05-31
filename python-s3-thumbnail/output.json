@@ -1,0 +1,38 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1", 
+            "eventSource": "aws:s3", 
+            "awsRegion": "ap-south-1", 
+            "eventTime": "2020-05-31T19: 13: 30.266Z", 
+            "eventName": "ObjectCreated:Put", 
+            "userIdentity": {
+                "principalId": "AWS:AIDAQVKNQGEUUWFRFXOYC"
+            }, 
+            "requestParameters": {
+                "sourceIPAddress": "182.70.42.248"
+            }, 
+            "responseElements": {
+                "x-amz-request-id": "6B140B119148BDBA", "x-amz-id-2": "J1IL/oXOeDUvJHfSGGlNQOupi5LBSmX/bvQHbIL7wOacSk7UaqXKrZ0jea0EA+vRGfOnd7PHFjTgjxjrz2GVQXVqI63bURJa50SBddwP8Zg="
+            }, 
+            "s3": 
+            {
+                "s3SchemaVersion": "1.0", 
+                "configurationId": "c583de9b-5d56-4a31-8718-8905e9d7ad0c", 
+                "bucket": 
+                {
+                    "name": "anshul-s3-thumbnail-generator", 
+                    "ownerIdentity": 
+                    {
+                        "principalId": "A15BGZTSC5ATD6"
+                    },
+                    "arn": "arn:aws:s3: : :anshul-s3-thumbnail-generator"
+                }, 
+                "object": 
+                {
+                    "key": "bg-beach.png", "size": 641761, "eTag": "8762d934bec2d80871294c3dac743873", "sequencer": "005ED401DD31BF3DF4"
+                }
+            }
+        }
+    ]
+}
